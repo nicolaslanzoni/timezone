@@ -21,9 +21,9 @@ function prove (assert) {
     // TODO This actually changed and there is an annotation in the files
     // with an entry that references a Free Press article.
     // Detroit did observe DST for a the year 1967.
-    assert(detroit(util.moonwalk, '-2 years', '%Z'), 'EST', 'format with letter')
+    assert(detroit(util.moonwalk, '-2 years', '%Z'), 'EDT', 'format with letter a')
     // So, let's try 1971.
-    assert(detroit(util.moonwalk, '+2 years', '%Z'), 'EST', 'format with letter')
+    assert(detroit(util.moonwalk, '+2 years', '%Z'), 'EST', 'format with letter b')
 
     // RFC 3999 friendly offsets
     assert(detroit(util.utc(2011, 0, 1, 0, 59), 'America/Detroit', '%^z'), '-05:00', 'RFC 3999 hours and minutes')
@@ -33,9 +33,9 @@ function prove (assert) {
 
     tz = tz(require('timezone/Europe/Amsterdam'))
 
-    assert(tz('1916-01-03', 'Europe/Amsterdam', '%Z'), 'AMT', 'dst full abbrev change back')
-    assert(tz('1916-07-03', 'Europe/Amsterdam', '%Z'), 'NST', 'dst full abbrev change forward')
-    assert(tz('1916-11-03', 'Europe/Amsterdam', '%Z'), 'AMT', 'dst full abbrev change back')
+    assert(tz('1916-01-03', 'Europe/Amsterdam', '%Z'), 'CET', 'dst full abbrev change back')
+    assert(tz('1916-07-03', 'Europe/Amsterdam', '%Z'), 'CEST', 'dst full abbrev change forward')
+    assert(tz('1916-11-03', 'Europe/Amsterdam', '%Z'), 'CET', 'dst full abbrev change back')
 
     assert(tz('1980-01-01', 'Europe/Amsterdam', '%-:z'), '+1:00', 'no padding forward offset')
     assert(tz('1980-01-01', 'Europe/Amsterdam', '%_:z'), ' +1:00', 'space padding forward offset')
